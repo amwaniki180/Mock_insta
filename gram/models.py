@@ -54,3 +54,7 @@ class Profile(models.Model):
         image = form.save(commit=False)
         image.user = self
         image.save()
+
+    @property
+    def follows(self):
+        return [follow.followee for follow in self.following.all()]
