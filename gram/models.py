@@ -37,3 +37,20 @@ class Profile(models.Model):
     def like(self, photo):
         if self.mylikes.filter(photo=photo).count() == 0:
             Likes(photo=photo,user=self).save()
+
+    def save_image(self, photo):
+        if self.saves.filter(photo=photo).count() == 0:
+            Saves(photo=photo,user=self).save()
+        else:
+            self.saves.filter(photo=photo).delete()
+
+    def unlike(self, photo):
+        self.mylikes.filter(photo=photo).all().delete()
+
+    def comment(self, photo, text):
+        Comment(text=text, photo=photo, user=self).save()
+
+    def post(self, form):
+        image = form.save(commit=False)
+        image.user = self
+        image.save()
