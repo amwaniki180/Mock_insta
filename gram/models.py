@@ -20,3 +20,8 @@ class Profile(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
+     
+
+     @classmethod
+    def find_profile(cls,name):
+        return cls.objects.filter(user__username__icontains = name).all()
