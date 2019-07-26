@@ -56,3 +56,16 @@ def user(request, user_id):
     user_images = user_object.profile.posts.all()
     user_liked = [like.photo for like in user_object.profile.mylikes.all()]
     return render(request, 'profile.html', locals())
+
+@login_required(login_url='/accounts/login/')
+def comment_on(request, post_id):
+    commentform = CommentForm()
+    post = get_object_or_404(Post, pk=post_id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user.profile
+            comment.photo = post
+            comment.save()
+    return render(request, 'post.html', locals())
