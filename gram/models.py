@@ -22,6 +22,18 @@ class Profile(models.Model):
         instance.profile.save()
      
 
-     @classmethod
+    @classmethod
     def find_profile(cls,name):
         return cls.objects.filter(user__username__icontains = name).all()
+
+    def togglefollow(self, profile):
+        if self.following.filter(followee=profile).count() == 0:
+            Follows(followee=profile, follower=self).save()
+            return True
+        else:
+            self.following.filter(followee=profile).delete()
+            return False
+
+    def like(self, photo):
+        if self.mylikes.filter(photo=photo).count() == 0:
+            Likes(photo=photo,user=self).save()
