@@ -69,3 +69,9 @@ def comment_on(request, post_id):
             comment.photo = post
             comment.save()
     return render(request, 'post.html', locals())
+
+@login_required(login_url='/accounts/login/')
+def like(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    request.user.profile.like(post)
+    return JsonResponse(post.count_likes, safe=False)
