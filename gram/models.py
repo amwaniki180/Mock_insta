@@ -58,3 +58,18 @@ class Profile(models.Model):
     @property
     def follows(self):
         return [follow.followee for follow in self.following.all()]
+
+class Post(models.Model):
+    image = models.ImageField(upload_to='posts/')
+    user = models.ForeignKey(Profile, related_name='posts')
+
+    @property
+    def get_comments(self):
+        return self.comments.all()
+
+    @property
+    def count_likes(self):
+        return self.photolikes.count()
+
+    class Meta:
+        ordering = ["-pk"]
