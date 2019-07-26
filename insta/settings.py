@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'gram.apps.GramConfig',
     'bootstrap4',
     'bootstrap3',
+    'utils',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
