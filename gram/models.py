@@ -11,3 +11,8 @@ class Profile(models.Model):
     Name = models.TextField(default="Anonymous")
     profile_picture = models.ImageField(upload_to='users/', default='users/user.png')
     bio = models.TextField(default="Welcome Me!")
+
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
