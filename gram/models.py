@@ -90,3 +90,7 @@ class Saves(models.Model):
 
     class Meta:
         ordering = ["-pk"]
+
+class Follows(models.Model):
+    follower = models.ForeignKey(Profile, related_name='following')
+    followee = models.ForeignKey(Profile, related_name='followers')
