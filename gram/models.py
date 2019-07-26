@@ -83,3 +83,10 @@ class Comment(models.Model):
 class Likes(models.Model):
     user = models.ForeignKey(Profile, related_name='mylikes')
     photo = models.ForeignKey(Post, related_name='photolikes')
+
+class Saves(models.Model):
+    user = models.ForeignKey(Profile, related_name='saves')
+    photo = models.ForeignKey(Post)
+
+    class Meta:
+        ordering = ["-pk"]
