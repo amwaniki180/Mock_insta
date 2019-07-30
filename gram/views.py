@@ -68,7 +68,7 @@ def comment_on(request, post_id):
             comment.user = request.user.profile
             comment.photo = post
             comment.save()
-    return render(request, 'post.html', locals())
+    return render(request, 'posts.html', locals())
 
 @login_required(login_url='/accounts/login/')
 def like(request, post_id):
