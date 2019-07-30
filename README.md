@@ -1,11 +1,11 @@
-# [mock_insta][(https://agile-inlet-62008.herokuapp.com/)]
+# [mock_insta][(https://still-gorge-91310.herokuapp.com//)]
 ### This is a clone of the image sharing network, Instagram. Users can sign up login, view and post photos and follow other users.
 
  
 ### July 22, 2019
 #### By **[ANTONY MWANIKI](https://github.com/amwaniki180)**
 ## Description
-[MOCK-INSTA]((https://agile-inlet-62008.herokuapp.com/))This is a clone of the image sharing network, Instagram. Users can sign up login, view and post photos and follow other users.
+[MOCK-INSTA]((https://still-gorge-91310.herokuapp.com//))This is a clone of the image sharing network, Instagram. Users can sign up login, view and post photos and follow other users.
 
 
 
@@ -41,7 +41,7 @@ CREATE DATABASE photos;
 Create .env file and paste paste the following filling where appropriate:
 ```python
 SECRET_KEY = '<Secret_key>'
-DBNAME = 'photos'
+DBNAME = 'instagram'
 USER = '<Username>'
 PASSWORD = '<password>'
 DEBUG = True
